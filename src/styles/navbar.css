@@ -1,0 +1,35 @@
+.navbar {
+    width: 64px;
+    height: 100vh;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .navbar-button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar-icon {
+    width: 32px; /* Set the icon size */
+    height: 32px;
+  }
+  
+  .navbar-button:hover {
+    background-color: #555;
+  }
+  
