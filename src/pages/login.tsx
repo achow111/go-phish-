@@ -1,11 +1,10 @@
+// Login.tsx
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // For navigation between pages
 import Fishbackground from "../assets/images/fishbackground.svg";
 
-export const Login = () => {
+export const Login = ({ setIsLogin, onLoginSuccess }: { setIsLogin: React.Dispatch<React.SetStateAction<boolean>>, onLoginSuccess: () => void }) => {
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const navigate = useNavigate(); // Hook for navigation
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,8 +17,10 @@ export const Login = () => {
 
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement login logic here
     console.log("Logging in with:", email);
+    
+    // Simulate successful login and trigger the onLoginSuccess function
+    onLoginSuccess();
   };
 
   return (
@@ -61,8 +62,8 @@ export const Login = () => {
         <div className="redirect-text">
           <p>
             Don't have an account?{" "}
-            <span onClick={() => navigate("/signup")} className="redirect-link">
-              Sign Up
+            <span onClick={() => setIsLogin(false)} className="redirect-link">
+              Signup
             </span>
           </p>
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Fishbackground from "../assets/images/fishbackground.svg";
 
-export const Signup = () => {
+export const Signup = ({ setIsLogin }: { setIsLogin: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -60,6 +60,14 @@ export const Signup = () => {
             Signup
           </button>
         </form>
+        <div className="redirect-text">
+          <p>
+            Already have an account?{" "}
+            <span onClick={() => setIsLogin(true)} className="redirect-link">
+               Login
+            </span>
+          </p>
+        </div>
       </div>
     </>
   );
