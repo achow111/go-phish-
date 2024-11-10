@@ -83,8 +83,23 @@
 .fish-congrats-message span {
     font-size: 2.5rem; /* Even larger for the word "fish" */
     font-weight: bolder;
-    color: #FF6347; /* You can use a different color for the word "fish" */
 }
+
+.fish-congrats-message .common {
+    color: #999999; /* Example color */
+  }
+  
+  .fish-congrats-message .rare {
+    color: #D56D6D; /* Example color */
+  }
+  
+  .fish-congrats-message .mythic {
+    color: #7089ED; /* Example color */
+  }
+  
+  .fish-congrats-message .legendary {
+    color: #EABD08; /* Example color */
+  }
 
 .message-container {
     width: 200px;
