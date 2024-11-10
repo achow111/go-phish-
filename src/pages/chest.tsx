@@ -82,7 +82,7 @@ export const Chest = () => {
   };
 
   return (
-    <div>
+    <div className="chest-main-container">
       {fish ? (
         <>
           <p>Congratulations! You caught a {fish}!</p>
