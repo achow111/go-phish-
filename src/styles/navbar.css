@@ -1,35 +1,46 @@
 .navbar {
-    width: 64px;
+    width: 30px; /* Reduced navbar width */
     height: 100vh;
     background-color: #333;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 10px; /* Adjusted padding for smaller navbar */
     position: fixed;
     top: 0;
+    border: none;
     left: 0;
-  }
-  
-  .navbar-button {
-    background-color: #444;
+}
+
+.navbar-button {
+    background-color: transparent; /* Remove default grey background */
     color: white;
     border: none;
-    padding: 10px;
+    padding: 4px; /* Reduced padding */
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .navbar-icon {
-    width: 32px; /* Set the icon size */
-    height: 32px;
-  }
-  
-  .navbar-button:hover {
-    background-color: #555;
-  }
-  
+    border-radius: 4px; /* Slight rounding */
+    outline: none;
+}
+
+/* Default active state for Home button */
+.navbar-button.active {
+    border: none;
+    background-color: #555; /* Grey background for active button */
+}
+
+.navbar-icon {
+    width: 20px; /* Smaller icon size */
+    height: 20px;
+    border: none;
+
+}
+
+.navbar-button:hover {
+    border: none;
+    background-color: #555; /* Grey background on hover */
+}
