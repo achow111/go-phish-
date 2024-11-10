@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 import PurpleWhaleSVG from '../assets/images/fishes/purplewhale.svg';
 import BarracudaSVG from '../assets/images/fishes/barracuda.svg';
@@ -22,18 +22,23 @@ export const Chest = () => {
   const [isFishVisible, setIsFishVisible] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-const userData = localStorage.getItem('user');
-const parsedUserData = JSON.parse(userData as any)
+  /*
+  
+  const userData = localStorage.getItem('user');
 
-const axiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+  const parsedUserData = JSON.parse(userData as any)
+
+  const axiosInstance = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  */
 
   // Increment barrel function
-  const incrementFish = async () => {
+  /* const incrementFish = async () => {
     try {
       const response = await axiosInstance.post('update-fish/', {
         fishname: fish, 
@@ -44,14 +49,13 @@ const axiosInstance = axios.create({
       console.error("Error incrementing fish:", err);
     }
   };
-
-const fishDict = parsedUserData.fish;
+  */
 
   const getFish = () => {
     const fishIndex = Math.floor(Math.random() * 100) + 1;
     if (fishIndex === 2) {
       setRarity("Legendary");
-      return "Purple Shark";
+      return "Purple Whale";
     } else if (fishIndex <= 6) {
       setRarity("Mythic");
       return "Barracuda";
@@ -79,18 +83,28 @@ const fishDict = parsedUserData.fish;
     }
   };
 
-  const getFishImage = (fish: string) => {
+  const getFishImage = (fish: any) => {
     switch (fish) {
-      case "Purple Whale": return <img src={PurpleWhaleSVG} alt="Purple Whale" />;
-      case "Barracuda": return <img src={BarracudaSVG} alt="Barracuda" />;
-      case "Squid": return <img src={SquidSVG} alt="Squid" />;
-      case "Crab": return <img src={CrabSVG} alt="Crab" />;
-      case "Pufferfish": return <img src={PufferfishSVG} alt="Pufferfish" />;
-      case "Salmon": return <img src={SalmonSVG} alt="Salmon" />;
-      case "Bass": return <img src={BassSVG} alt="Bass" />;
-      case "Trout": return <img src={TroutSVG} alt="Trout" />;
-      case "Cod": return <img src={CodSVG} alt="Cod" />;
-      default: return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
+      case "Purple Whale":
+        return <img src={PurpleWhaleSVG} alt="Purple Whale" className="fish-logo-image" />;
+      case "Barracuda":
+        return <img src={BarracudaSVG} alt="Barracuda" className="fish-logo-image" />;
+      case "Squid":
+        return <img src={SquidSVG} alt="Squid" className="fish-logo-image" />;
+      case "Crab":
+        return <img src={CrabSVG} alt="Crab" className="fish-logo-image" />;
+      case "Pufferfish":
+        return <img src={PufferfishSVG} alt="Pufferfish" className="fish-logo-image" />;
+      case "Salmon":
+        return <img src={SalmonSVG} alt="Salmon" className="fish-logo-image" />;
+      case "Bass":
+        return <img src={BassSVG} alt="Bass" className="fish-logo-image" />;
+      case "Trout":
+        return <img src={TroutSVG} alt="Trout" className="fish-logo-image" />;
+      case "Cod":
+        return <img src={CodSVG} alt="Cod" className="fish-logo-image" />;
+      default:
+        return <img src={BarrelSVG} alt="Barrel" className="fish-logo-image barrel" />;
     }
   };
 
@@ -98,7 +112,8 @@ const fishDict = parsedUserData.fish;
     if (plays > 0 && !isTransitioning) {
       setIsTransitioning(true);
       setMessage("");
-      setFish(getFish());
+      const caughtFish = getFish();
+      setFish(caughtFish);
       setIsFishVisible(true);
       setTimeout(() => {
         setIsFishVisible(false);
@@ -135,16 +150,16 @@ const fishDict = parsedUserData.fish;
       </div>
       {fish && (
         <div className="message-container">
-          <p className="fish-congrats-message">
-            Congratulations! You caught a
-          </p>
+          <p className="fish-congrats-message">Congratulations! You caught a</p>
           <span className={`rarity-pill ${rarity.toLowerCase()}`}>{rarity}</span>
           <p className="black-fish">{fish}</p>
         </div>
       )}
       {message && <p>{message}</p>}
       <div className="barrels-info">
-        <p className="barrels-count">Barrels remaining: <span className="barrels-number">{plays}</span></p>
+        <p className="barrels-count">
+          Barrels remaining: <span className="barrels-number">{plays}</span>
+        </p>
       </div>
     </div>
   );
