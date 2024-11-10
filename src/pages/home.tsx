@@ -34,6 +34,25 @@ export const Home = () => {
     setEmailContent(e.target.value);
   };
 
+  const axiosInstance = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  // Increment barrel function
+  const incrementBarrel = async () => {
+    try {
+      const response = await axiosInstance.post('update-barrel/', {
+        action: 'increment',
+      });
+      console.log("Barrel incremented:", response.data);
+    } catch (err) {
+      console.error("Error incrementing barrel:", err);
+    }
+  };
+
   const handleSubmit = async () => {
     if (emailContent.trim() === "") {
       setErrorMessage("Please enter the email content.");
@@ -57,8 +76,11 @@ export const Home = () => {
 
       setPredictedDepartment(response.data.predictedDepartment);
 
-      // If prediction is likely or most likely, fetch justification from Groq
+      // If prediction is likely or most likely, fetch justification from Groq and increment barrel
       if (response.data.predictedDepartment >= 0.76) {
+        // Call incrementBarrel if the department is "likely" or "most likely"
+        incrementBarrel();
+
         const groqResponse = await groq.chat.completions.create({
           model: "llama3-8b-8192",  // Groq model
           messages: [
@@ -209,5 +231,3 @@ export const Home = () => {
     </div>
   );
 };
-
-export default Home;
