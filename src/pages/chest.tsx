@@ -70,6 +70,21 @@ export const Chest = () => {
                 return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
         }
     };
+
+    const getFishClassName = (fish: string) => {
+      switch (fish) {
+          case "Purple Whale": return "legendary";
+          case "Barracuda": return "mythic";
+          case "Squid": return "mythic";
+          case "Crab": return "rare";
+          case "Pufferfish": return "rare";
+          case "Salmon": return "rare";
+          case "Bass": return "common";
+          case "Trout": return "common";
+          case "Cod": return "common";
+          default: return "";
+      }
+  };
     
     const handleNewFish = () => {
         if (plays > 0 && !isTransitioning) {
@@ -114,7 +129,7 @@ export const Chest = () => {
                 )}
             </div>
             {fish && <p className="fish-congrats-message">
-                Congratulations! You caught a <span>{fish}</span>
+                Congratulations! You caught a <span className={getFishClassName(fish)}>{fish}</span>
             </p>}
 
             {message && <p>{message}</p>}
