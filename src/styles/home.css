@@ -4,7 +4,7 @@
       opacity: 0.9;
     }
     50% {
-      transform: scale(1.02);
+      transform: scale(1.09);
       opacity: 1;
     }
     100% {
@@ -31,9 +31,8 @@
   }
   
   .phish-button:hover {
-    filter: brightness(1.1);
-    animation: none; /* Stop the pulsing animation on hover */
-    transform: scale(1.05); /* Scale up the button on hover */
+    filter: brightness(1.7);
+    animation: none;
   }
   
   .phish-button:active {
@@ -66,3 +65,30 @@
     background-color: #45a049;
   }
   
+  .phishing-status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 1rem;
+    margin-top: 20px;
+}
+
+.status-icon {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.status-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.percentage-text {
+    font-size: 16px;
+    color: #555;
+    margin-top: 5px;
+}
