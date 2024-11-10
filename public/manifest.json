@@ -6,5 +6,11 @@
     "action": {
       "default_popup": "index.html"
     },
-    "permissions": []
+    "permissions": [],
+    "icons": [
+      {
+        "src": "../assets/images/logo.png",
+        "type": "image/png"
+      }
+    ]
   }
