@@ -174,16 +174,3 @@ def check_credentials(request):
 
     # If no matching user is found, return error
     return Response({"error": "Invalid email or password."}, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['POST'])
-def update_barrel(request):
-    action = request.data.get('action')
-    employee_id = request.data.get('id')
-    
-    if action == 'increment' and employee_id:
-        employee = Employee.objects.filter(id=employee_id).first()
-        employee.barrel += 1
-        employee.save()
-        return Response({"message": "Barrel incremented successfully."}, status=status.HTTP_200_OK)
-
-    return Response({"error": "Invalid request."}, status=status.HTTP_400_BAD_REQUEST)

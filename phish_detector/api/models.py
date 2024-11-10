@@ -40,7 +40,6 @@ class Employee(AbstractUser):
     password = models.CharField(max_length=100, blank=False, null=False)
     email = models.CharField(max_length=100, blank=False, null=False)
     organization = models.CharField(max_length=100, blank=True, null=True)
-    barrels = models.IntegerField(default=5)
     fish = models.JSONField(default={
         'Cod': 0, 
         'Bass': 0, 
