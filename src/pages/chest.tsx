@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import background from "../assets/images/background.svg";
+
 import PurpleWhaleSVG from '../assets/images/fishes/purplewhale.svg';
 import BarracudaSVG from '../assets/images/fishes/barracuda.svg';
 import SquidSVG from '../assets/images/fishes/squid.svg';
