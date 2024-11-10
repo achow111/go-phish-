@@ -1,27 +1,34 @@
 import React, { useState } from "react";
+import axios from "axios";
 import PhishButton from "../assets/images/PhishButton.svg";
 
 export const Home = () => {
-  // State to store textarea content
   const [emailContent, setEmailContent] = useState<string>("");
+  const [predictedDepartment, setPredictedDepartment] = useState<string | null>(null);
 
-  // Handle textarea change
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setEmailContent(e.target.value);
   };
 
-  // Handle button click to submit the content
-  const handleSubmit = () => {
-    // For now, just log the content, you can implement your phishing check here
-    console.log("Email content submitted:", emailContent);
-
-    // Example: Trigger a phishing check (you can replace this with your own logic)
-    // checkForPhishing(emailContent);
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/api/predict/',
+        new URLSearchParams({ emailContent: emailContent }),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+      setPredictedDepartment(response.data.predictedDepartment);
+    } catch (error) {
+      console.error("Error during prediction:", error);
+    }
   };
 
   return (
     <div className="home-container">
-      <p>Copy paste email content in here:</p>
+      <p>Copy-paste email content here:</p>
       <textarea
         className="email-textarea"
         placeholder="Include the subject, body, anything else you can..."
@@ -35,6 +42,7 @@ export const Home = () => {
         onClick={handleSubmit} // Trigger handleSubmit on click
       />
       <p>Click to check email for phishing</p>
+      {predictedDepartment && <p>Predicted Department: {predictedDepartment}</p>}
     </div>
   );
 };

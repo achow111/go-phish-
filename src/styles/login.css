@@ -23,6 +23,22 @@
     text-align: center;
 }
 
+.redirect-link {
+    color: #4CAF50; /* Set the link color */
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline; /* Underline to make it clear it's a link */
+    transition: color 0.2s ease-in-out; /* Smooth color transition */
+}
+
+.redirect-link:hover {
+    color: #45a049; /* Darker color on hover */
+}
+
+.redirect-link:active {
+    color: #388e3c; /* Even darker shade on click */
+}
+
 .signup-header-container {
     display: flex;
     flex-direction: column;
