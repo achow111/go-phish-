@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Go Phish!",
     "version": "1.0.0",
-    "description": "A simple React app as a Chrome extension",
+    "description": "Fishing for phishing emails!",
     "action": {
       "default_popup": "index.html"
     },

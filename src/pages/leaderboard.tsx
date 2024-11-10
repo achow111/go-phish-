@@ -8,7 +8,7 @@ export const Leaderboard = () => {
   const [errorMessage, setErrorMessage] = useState('');
   
   // Dummy organization code for validation
-  const validOrgCode = "ABCD"; // Example valid org code for demonstration
+  const validOrgCode = "NIKE"; // Example valid org code for demonstration
 
   // Function to handle organization code submission
   const handleJoinOrganization = () => {
