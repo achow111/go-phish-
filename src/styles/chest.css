@@ -79,6 +79,39 @@
     margin-top: 10px;
 }
 
+.rarity-pill {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.rarity-pill.common {
+    background-color: #999999;
+}
+
+.rarity-pill.rare {
+    background-color: #D56D6D;
+}
+
+.rarity-pill.mythic {
+    background-color: #7089ED;
+}
+
+.rarity-pill.legendary {
+    background-color: #EABD08;
+}
+
+.black-fish {
+    color: black;
+    font-size: 2rem; /* Adjust the size as needed */
+    font-weight: bold; /* Makes the text bold for emphasis */
+    text-align: center; /* Centers the text if needed */
+}
 
 .fish-congrats-message span {
     font-size: 2.5rem; /* Even larger for the word "fish" */
@@ -127,4 +160,10 @@
 .fish-container img {
     max-width: 300px;
     max-height: 300px;
+}
+
+
+.empty-state {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
 }

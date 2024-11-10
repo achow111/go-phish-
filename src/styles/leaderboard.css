@@ -1,5 +1,6 @@
 .leaderboard-row {
     display: flex;
+    
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ddd;
@@ -25,7 +26,28 @@
     width: 100px;
   }
   
-  .btn {
-    background: #41616C;
-    color: white;
-  }
+
+  
+.joinup-button {
+  background-color: #41616C;
+  color: white;
+  padding: 12px 24px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.joinup-button:hover {
+  background-color: #61924E;
+  /* Darker shade for hover effect */
+}
+
+.leaderboard-container {
+  margin-left: 2rem;
+}
+
+.leaderboard-table {
+  margin-left: 0rem;
+}
