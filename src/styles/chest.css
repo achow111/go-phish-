@@ -167,3 +167,19 @@
     width: 200px; /* Adjust size as needed */
     height: auto;
 }
+
+.barrels-info {
+    text-align: center;
+    margin: 20px;
+}
+
+.barrels-count {
+    font-size: 18px;
+    color: #333;
+}
+
+.barrels-number {
+    font-weight: bold;
+    color: #003366; /* Dark blue color */
+    font-size: 24px;
+}
