@@ -28,7 +28,7 @@ function App() {
       {isAuthenticated ? (
         <div style={{ display: "flex" }}>
           <Navbar onNavClick={handleNavClick} /> {/* Pass handleNavClick to Navbar */}
-          <div style={{ marginLeft: "100px" }}>
+          <div style={{ marginLeft: "125px" }}>
             {activePage === "Home" && <Home />}
             {activePage === "Chest" && <Chest />}
             {activePage === "FishTank" && <FishTank />}
