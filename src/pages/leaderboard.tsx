@@ -12,9 +12,12 @@ export const Leaderboard = () => {
         <BoardRow position={1} username="Abeer Das" score={420} />
         <BoardRow position={2} username="Aaron Chow" score={69} />
         <BoardRow position={3} username="Sahej Singh Sodhi" score={12} />
+        <BoardRow position={1} username="Sahej Sodhi" score={67} />
+        <BoardRow position={2} username="Abeer Das" score={62} />
+        <BoardRow position={3} username="Aaron Chow" score={60} />
+        <BoardRow position={4} username="Megh Patel" score={59} />
       </div>
     );
-  };
-  
-  export default Leaderboard;
-  
+};
+
+export default Leaderboard;
