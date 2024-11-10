@@ -26,14 +26,14 @@
     height: 128px;
     margin-top: 20px;
     cursor: pointer;
-    transition: transform 0.5s ease, filter 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
     animation: pulse 2s infinite;
   }
   
   .phish-button:hover {
-    filter: brightness(1.01);
-    transform: scale(1.95);
-
+    filter: brightness(1.1);
+    animation: none; /* Stop the pulsing animation on hover */
+    transform: scale(1.05); /* Scale up the button on hover */
   }
   
   .phish-button:active {
