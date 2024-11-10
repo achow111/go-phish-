@@ -7,10 +7,10 @@
       "default_popup": "index.html"
     },
     "permissions": [],
-    "icons": [
-      {
-        "src": "../assets/images/logo.png",
-        "type": "image/png"
-      }
-    ]
+    "icons": {
+    "16": "logo-192x192.png",
+    "48": "logo-192x192.png",
+    "128": "logo-192x192.png",
+    "192": "logo-192x192.png"
   }
+}
