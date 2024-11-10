@@ -1,41 +1,32 @@
-// src/components/Home.tsx
-
 import React, { useState } from "react";
 import axios from "axios";
 import PhishButton from "../assets/images/PhishButton.svg";
-import {PhishingStatus} from "./PhishStatus"; // Import the new component
+import { PhishingStatus } from "./PhishStatus"; // Import the new component
 
 const apiUrl = 'http://127.0.0.1:8000/api/predictor/';  // Replace with your Django server URL
 
 export const Home = () => {
   const [emailContent, setEmailContent] = useState<string>("");
-  const [predictedDepartment, setPredictedDepartment] = useState<string | null>(null);
+  const [predictedDepartment, setPredictedDepartment] = useState<number | null>(null); // Change to number type
   const [errorMessage, setErrorMessage] = useState<string>("");
-<<<<<<< HEAD
   const [loading, setLoading] = useState<boolean>(false);
-=======
   const [showPhishingPage, setShowPhishingPage] = useState<boolean>(false); // State to toggle PhishingPage
->>>>>>> 28a15001bbf1d6e50487451ef5fe2fb64b4ee088
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setEmailContent(e.target.value);
   };
 
   const handleSubmit = async () => {
-    // Check if the input is empty
     if (emailContent.trim() === "") {
       setErrorMessage("Please enter the email content.");
       return;
     }
 
-    // Clear previous error message
     setErrorMessage("");
-
-    // Show loading state
     setLoading(true);
+    setShowPhishingPage(true); // Show the phishing prediction results when the button is clicked
 
     try {
-      // Send POST request to Django API
       const response = await axios.post(
         `${apiUrl}`,  // Ensure the correct endpoint is used
         new URLSearchParams({ emailContent: emailContent }),
@@ -46,21 +37,29 @@ export const Home = () => {
         }
       );
 
-      // Handle successful response
       setPredictedDepartment(response.data.predictedDepartment);
     } catch (error) {
-      // Handle error response
       console.error("Error during prediction:", error);
       setErrorMessage("There was an error during the prediction. Please try again.");
     } finally {
-      // Hide loading state
       setLoading(false);
     }
   };
 
-  // Conditionally render the PhishingPage component if showPhishingPage is true
-  if (showPhishingPage) {
-    return <PhishingStatus status="likely" percentage={85} />;
+  // Conditionally render the PhishingStatus component based on predictedDepartment
+  if (showPhishingPage && predictedDepartment !== null) {
+    const percentage = predictedDepartment * 100;
+
+    // Define the status and type it as one of the three allowed values
+    let status: "unlikely" | "likely" | "most likely" = "unlikely"; // Default to "unlikely"
+
+    if (percentage >= 76 && percentage <= 90) {
+      status = "likely";
+    } else if (percentage >= 91 && percentage <= 100) {
+      status = "most likely";
+    }
+
+    return <PhishingStatus status={status} percentage={percentage} />;
   }
 
   return (
@@ -78,15 +77,11 @@ export const Home = () => {
         alt="Phish button"
         onClick={handleSubmit}
       />
-      <p>Click to check email for phishing</p>
 
-      {/* Loading state */}
       {loading && <p>Loading...</p>}
-
-      {/* Show predicted department if available */}
-      {predictedDepartment && <p>Predicted Department: {predictedDepartment}</p>}
-
-      {/* Show error message if applicable */}
+      {predictedDepartment !== null && (
+        <p>Predicted Department: {predictedDepartment * 100}%</p>
+      )}
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
