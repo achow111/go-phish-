@@ -53,4 +53,7 @@ class Employee(models.Model):
 
         return result
 
+    @property
+    def fish_rarity(self):
+        return fish_rarity
     
