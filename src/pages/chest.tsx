@@ -12,108 +12,130 @@ import CodSVG from '../assets/images/fishes/cod.svg';
 import BarrelSVG from '../assets/images/barrel.svg';
 
 export const Chest = () => {
-  const [plays, setPlays] = useState(500);
-  const [fish, setFish] = useState("");
-  const [message, setMessage] = useState("");
-  const [isFishVisible, setIsFishVisible] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+    const [plays, setPlays] = useState(500);
+    const [fish, setFish] = useState("");
+    const [message, setMessage] = useState("");
+    const [isFishVisible, setIsFishVisible] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const getFish = () => {
-    // Legendary: 1%
-    // Mythic: 9%
-    // Rare: 30%
-    // Common: 60%
-    const fishIndex = Math.floor(Math.random() * 100) + 1;
+    const getFish = () => {
+        // Legendary: 1%
+        // Mythic: 9%
+        // Rare: 30%
+        // Common: 60%
+        const fishIndex = Math.floor(Math.random() * 100) + 1;
 
-    if (fishIndex === 2) {
-      return "Purple Whale";
-    } else if (fishIndex <= 6) {
-      return "Barracuda";
-    } else if (fishIndex <= 10) {
-      return "Squid";
-    } else if (fishIndex <= 20) {
-      return "Crab";
-    } else if (fishIndex <= 30) {
-      return "Pufferfish";
-    } else if (fishIndex <= 40) {
-      return "Salmon";
-    } else if (fishIndex <= 60) {
-      return "Bass";
-    } else if (fishIndex <= 80) {
-      return "Trout";
-    } else {
-      return "Cod";
-    }
+        if (fishIndex === 2) {
+            return "Purple Whale";
+        } else if (fishIndex <= 6) {
+            return "Barracuda";
+        } else if (fishIndex <= 10) {
+            return "Squid";
+        } else if (fishIndex <= 20) {
+            return "Crab";
+        } else if (fishIndex <= 30) {
+            return "Pufferfish";
+        } else if (fishIndex <= 40) {
+            return "Salmon";
+        } else if (fishIndex <= 60) {
+            return "Bass";
+        } else if (fishIndex <= 80) {
+            return "Trout";
+        } else {
+            return "Cod";
+        }
+    };
+
+    const getFishImage = (fish: string) => {
+        switch (fish) {
+            case "Purple Whale":
+                return <img src={PurpleWhaleSVG} alt="Purple Whale" />;
+            case "Barracuda":
+                return <img src={BarracudaSVG} alt="Barracuda" />;
+            case "Squid":
+                return <img src={SquidSVG} alt="Squid" />;
+            case "Crab":
+                return <img src={CrabSVG} alt="Crab" />;
+            case "Pufferfish":
+                return <img src={PufferfishSVG} alt="Pufferfish" />;
+            case "Salmon":
+                return <img src={SalmonSVG} alt="Salmon" />;
+            case "Bass":
+                return <img src={BassSVG} alt="Bass" />;
+            case "Trout":
+                return <img src={TroutSVG} alt="Trout" />;
+            case "Cod":
+                return <img src={CodSVG} alt="Cod" />;
+            default:
+                return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
+        }
+    };
+
+    const getFishClassName = (fish: string) => {
+      switch (fish) {
+          case "Purple Whale": return "legendary";
+          case "Barracuda": return "mythic";
+          case "Squid": return "mythic";
+          case "Crab": return "rare";
+          case "Pufferfish": return "rare";
+          case "Salmon": return "rare";
+          case "Bass": return "common";
+          case "Trout": return "common";
+          case "Cod": return "common";
+          default: return "";
+      }
   };
+    
+    const handleNewFish = () => {
+        if (plays > 0 && !isTransitioning) {
+            setIsTransitioning(true);  // Start transition
+    
+            // Clear any previous message before transitioning
+            setMessage(""); 
+    
+            // Start by hiding the barrel and showing the fish
+            setFish(getFish());
+            setIsFishVisible(true);
+    
+            // After 3 seconds (time for fish to fade in), reset and show the barrel
+            setTimeout(() => {
+                setIsFishVisible(false);
+                setPlays(plays - 1);
+                setIsTransitioning(false); // End transition
+    
+                // Clear the fish state when transitioning back to barrel
+                setFish("");  // This will hide the congrats message
+            }, 3000); // Fish will be visible for 3 seconds
+        } else {
+            setFish("");
+            setMessage("You don't have enough plays left.");
+        }
+    };
 
-  const getFishImage = (fish: string) => {
-    switch (fish) {
-      case "Purple Whale":
-        return <img src={PurpleWhaleSVG} alt="Purple Whale" />;
-      case "Barracuda":
-        return <img src={BarracudaSVG} alt="Barracuda" />;
-      case "Squid":
-        return <img src={SquidSVG} alt="Squid" />;
-      case "Crab":
-        return <img src={CrabSVG} alt="Crab" />;
-      case "Pufferfish":
-        return <img src={PufferfishSVG} alt="Pufferfish" />;
-      case "Salmon":
-        return <img src={SalmonSVG} alt="Salmon" />;
-      case "Bass":
-        return <img src={BassSVG} alt="Bass" />;
-      case "Trout":
-        return <img src={TroutSVG} alt="Trout" />;
-      case "Cod":
-        return <img src={CodSVG} alt="Cod" />;
-      default:
-        return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
-    }
-  };
+    return (
+        <div className="chest-main-container">
+            <div className="image-container">
+                {!isFishVisible ? (
+                    <img
+                        src={BarrelSVG}
+                        alt="Barrel"
+                        className={`barrel ${isTransitioning ? "dissolve" : ""}`}
+                        onClick={handleNewFish}
+                    />
+                ) : (
+                    <div className="fish-container fade-in">
+                        {getFishImage(fish)}
+                    </div>
+                )}
+            </div>
+            {fish && <p className="fish-congrats-message">
+                Congratulations! You caught a <span className={getFishClassName(fish)}>{fish}</span>
+            </p>}
 
-  const handleNewFish = () => {
-    if (plays > 0 && !isTransitioning) {
-      setIsTransitioning(true);  // Start transition
-
-      // Start by hiding the barrel and showing the fish
-      setFish(getFish());
-      setIsFishVisible(true);
-
-      // After 2 seconds (time for fish to fade in), reset and show the barrel
-      setTimeout(() => {
-        setIsFishVisible(false);
-        setPlays(plays - 1);
-        setMessage(""); // Clear any previous message
-        setIsTransitioning(false); // End transition
-      }, 3000); // Fish will be visible for 3 seconds
-    } else {
-      setFish("");
-      setMessage("You don't have enough plays left.");
-    }
-  };
-
-  return (
-    <div className="chest-main-container">
-      <div className="image-container">
-        {!isFishVisible ? (
-          <img
-            src={BarrelSVG}
-            alt="Barrel"
-            className={`barrel ${isTransitioning ? "dissolve" : ""}`}
-            onClick={handleNewFish}
-          />
-        ) : (
-          <div className="fish-container fade-in">
-            {getFishImage(fish)}
-          </div>
-        )}
-      </div>
-
-      {fish && <p>Congratulations! You caught a {fish}!</p>}
-      {message && <p>{message}</p>}
-      <p>Plays remaining: {plays}</p>
-    </div>
-  );
+            {message && <p>{message}</p>}
+            <p>Plays remaining: {plays}</p>
+        </div>
+    );
 };
 
 export default Chest;

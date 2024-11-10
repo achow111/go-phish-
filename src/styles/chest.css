@@ -1,52 +1,130 @@
 .barrel:hover {
     animation: shake 0.5s;
     animation-iteration-count: infinite;
-  }
-  
-  @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
 
 .chest-main-container {
-    margin-left: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.chest-main-container p {
+    margin: 10px 0;
 }
 
 .barrel {
-    width: 100px;
-    height: 100px;
-    transition: opacity 1s ease-in-out; /* Smooth fade-out when dissolving */
-  }
-  
-  .fish-container {
+    width: 200px;
+    height: 200px;
+    transition: opacity 1s ease-in-out;
+}
+
+.fish-container {
     opacity: 0;
-    transition: opacity 2s ease-in-out; /* Smooth fade-in for fish */
+    transition: opacity 2s ease-in-out;
+}
+
+.fish-congrats-message {
+    display: inline-block;
+    width: 200px;
+    word-wrap: break-word;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.fish-congrats-message span {
+    font-size: 2.5rem; /* Even larger for the word "fish" */
+    font-weight: bolder;
+}
+
+.fish-congrats-message .common {
+    color: #999999; /* Example color */
   }
   
-  .fade-in {
+  .fish-congrats-message .rare {
+    color: #D56D6D; /* Example color */
+  }
+  
+  .fish-congrats-message .mythic {
+    color: #7089ED; /* Example color */
+  }
+  
+  .fish-congrats-message .legendary {
+    color: #EABD08; /* Example color */
+  }
+
+.message-container {
+    width: 200px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.fade-in {
     opacity: 1;
-  }
-  
-  .dissolve {
+}
+
+.dissolve {
     opacity: 0;
-  }
-  
-  .image-container {
+}
+
+.image-container {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .fish-container img {
-    max-width: 100px;
-    max-height: 100px;
-  }
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.fish-container img {
+    max-width: 300px;
+    max-height: 300px;
+}

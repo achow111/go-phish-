@@ -1,34 +1,46 @@
-.home-container {
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scale(1.02);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+  }
+  
+  .home-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.phish-button {
+  }
+  
+  .phish-button {
     width: 128px;
     height: 128px;
-    /* Maintain aspect ratio by setting both width and height */
     margin-top: 20px;
-    /* Space between the button and text */
     cursor: pointer;
-    /* Pointer cursor on hover */
-    transition: transform 0.2s ease, filter 0.3s ease;
-    /* Smooth transitions for transform and filter effects */
-}
-
-.phish-button:hover {
-    filter: brightness(1.2);
-    /* Makes the SVG lighter on hover */
-}
-
-.phish-button:active {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: pulse 2s infinite;
+  }
+  
+  .phish-button:hover {
+    filter: brightness(1.1);
+    animation: none; /* Stop the pulsing animation on hover */
+    transform: scale(1.05); /* Scale up the button on hover */
+  }
+  
+  .phish-button:active {
     transform: scale(0.95);
-    /* Slightly shrink the button when clicked for a click animation */
-}
-
-.email-textarea {
+  }
+  
+  .email-textarea {
     width: 246px;
     height: 150px;
     margin-top: 10px;
@@ -37,9 +49,9 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: none !important;
-}
-
-.check-button {
+  }
+  
+  .check-button {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -48,8 +60,9 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-}
-
-.check-button:hover {
+  }
+  
+  .check-button:hover {
     background-color: #45a049;
-}
+  }
+  

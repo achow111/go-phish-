@@ -8,6 +8,8 @@ import Leaderboard from "./pages/leaderboard";
 
 import Navbar from "./components/navbar";
 
+import background from "./assets/images/background.svg";
+
 import "./App.css";
 
 function App() {
@@ -26,16 +28,21 @@ function App() {
   // Create a style object with marginLeft based on the active page
   const pageStyles: { [key: string]: React.CSSProperties } = {
     Home: { marginLeft: "80px" },
-    Chest: { marginLeft: "80px" },
+    Chest: { marginLeft: "130px" },
     FishTank: { marginLeft: "55px" },
-    Leaderboard: { marginLeft: "80px" },
+    Leaderboard: { marginLeft: "40px" },
   };
 
   return (
     <div className="card">
+      {/* Background image (absolute positioned behind content) */}
+      <div className="background-container">
+        <img src={background} alt="background" className="background-image" />
+      </div>
+
       {isAuthenticated ? (
         <div style={{ display: "flex" }}>
-          <Navbar onNavClick={handleNavClick} /> {/* Pass handleNavClick to Navbar */}
+          <Navbar onNavClick={handleNavClick} />
           <div style={pageStyles[activePage]}>
             {activePage === "Home" && <Home />}
             {activePage === "Chest" && <Chest />}
