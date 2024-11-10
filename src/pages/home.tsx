@@ -15,6 +15,19 @@ export const Home = () => {
   const [showPhishingPage, setShowPhishingPage] = useState<boolean>(false); // State to toggle PhishingPage
   const [showModal, setShowModal] = useState<boolean>(false);
 
+
+  const axiosInstance = axios.create({
+    baseURL: "http://127.0.0.1:8000/api/",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+
+  const userData = localStorage.getItem('user');
+
+  const parsedUserData = JSON.parse(userData as any)
+
   // Function to show the modal
   const showModalHandler = () => {
     setShowModal(true);
@@ -34,18 +47,13 @@ export const Home = () => {
     setEmailContent(e.target.value);
   };
 
-  const axiosInstance = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
 
   // Increment barrel function
   const incrementBarrel = async () => {
     try {
       const response = await axiosInstance.post('update-barrel/', {
-        action: 'increment',
+        action: 'increment', 
+        id: parsedUserData.id,
       });
       console.log("Barrel incremented:", response.data);
     } catch (err) {
