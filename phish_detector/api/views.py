@@ -27,7 +27,7 @@ class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 # Load the pipeline (model + vectorizer) from the .pkl file
-model_path = '/Users/aaronchow/Documents/GitHub/go-phish-/phish_detector/predictor/model_with_vectorizer_and_encoder.pkl'
+model_path = '/Users/megh/Documents/GitHub/go-phish-/phish_detector/predictor/model_with_vectorizer_and_encoder.pkl'
 with open(model_path, 'rb') as f:
     model_pipeline = pickle.load(f)
 
@@ -97,16 +97,36 @@ def check_credentials(request):
     # If no matching user is found, return error
     return Response({"error": "Invalid email or password."}, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['POST'])
 def update_barrel(request):
+
     action = request.data.get('action')
     employee_id = request.data.get('id')
     
     if action == 'increment' and employee_id:
         employee = Employee.objects.filter(id=employee_id).first()
-        employee.barrel += 1
+        employee.barrels += 1
         employee.save()
         return Response({"message": "Barrel incremented successfully."}, status=status.HTTP_200_OK)
+
+    elif action == 'decrement' and employee_id:
+        employee = Employee.objects.filter(id=employee_id).first()
+        employee.barrels -= 1
+        employee.save()
+        return Response({"message": "Barrel decremented successfully."}, status=status.HTTP_200_OK)
+
+    return Response({"error": "Invalid request."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def update_fish(request):
+    fish = request.data.get('fishname')
+    employee_id = request.data.get('id')
+    print(fish, employee_id)
+    if fish and employee_id:
+        employee = Employee.objects.filter(id=employee_id).first()
+        employee.fish[fish]+= 1
+        employee.save()
+        return Response({"message": "Fish incremented successfully."}, status=status.HTTP_200_OK)
 
     return Response({"error": "Invalid request."}, status=status.HTTP_400_BAD_REQUEST)
