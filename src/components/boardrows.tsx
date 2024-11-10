@@ -1,7 +1,7 @@
 interface BoardRowProps {
-    position: number;
-    username: string;
-    score: number;
+  position: number;
+  username: string;
+  score: number;
 }
 
 const LeaderboardRow = ({ position, username, score }: BoardRowProps) => {
