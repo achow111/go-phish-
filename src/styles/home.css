@@ -3,11 +3,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     text-align: center;
-  }
-  
-  .email-textarea {
+}
+
+.phish-button {
+    width: 128px;
+    height: 128px;
+    /* Maintain aspect ratio by setting both width and height */
+    margin-top: 20px;
+    /* Space between the button and text */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: transform 0.2s ease, filter 0.3s ease;
+    /* Smooth transitions for transform and filter effects */
+}
+
+.phish-button:hover {
+    filter: brightness(1.2);
+    /* Makes the SVG lighter on hover */
+}
+
+.phish-button:active {
+    transform: scale(0.95);
+    /* Slightly shrink the button when clicked for a click animation */
+}
+
+.email-textarea {
     width: 246px;
     height: 150px;
     margin-top: 10px;
@@ -15,10 +36,10 @@
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: none !important; 
-  }
-  
-  .check-button {
+    resize: none !important;
+}
+
+.check-button {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -27,9 +48,8 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .check-button:hover {
+}
+
+.check-button:hover {
     background-color: #45a049;
-  }
-  
+}

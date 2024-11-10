@@ -1,5 +1,6 @@
 @import "./styles/login.css";
 @import "./styles/navbar.css";
+@import "./styles/home.css";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
