@@ -26,9 +26,9 @@ function App() {
   // Create a style object with marginLeft based on the active page
   const pageStyles: { [key: string]: React.CSSProperties } = {
     Home: { marginLeft: "80px" },
-    Chest: { marginLeft: "80px" },
+    Chest: { marginLeft: "170px" },
     FishTank: { marginLeft: "55px" },
-    Leaderboard: { marginLeft: "80px" },
+    Leaderboard: { marginLeft: "40px" },
   };
 
   return (

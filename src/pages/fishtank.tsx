@@ -9,7 +9,6 @@ export const FishTank = () => {
   return (
     <div className="fish-tank">
       <h1>The Fish Tank</h1>
-      <p>Here you can manage your fish tank.</p>
       <div className="fish-grid">
         <FishCard image={PurpleWhaleSVG} rarity="Rare" name="Purple Whale" quantity={4}/>
         <FishCard image={BarracudaSVG} rarity="Uncommon" name="Barracuda" quantity={4} />

@@ -3,7 +3,7 @@ import BoardRow from '../components/boardrows';
 export const Leaderboard = () => {
     return (
       <div>
-        <h1>Welcome to the Leaderboard Page!</h1>
+        <h1>Organization Leaderboard</h1>
         <div className="leaderboard-row">
           <span className="position">Place</span>
           <span className="username">Username</span>
