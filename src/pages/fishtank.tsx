@@ -32,7 +32,7 @@ export const FishTank = () => {
         // Determine the image path to use based on the fish name
         let fishImage;
         switch (name) {
-          case "Purple Whale":
+          case "Purple Shark":
             fishImage = PurpleWhaleSVG;
             break;
           case "Barracuda":

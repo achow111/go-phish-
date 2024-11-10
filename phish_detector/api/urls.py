@@ -1,5 +1,5 @@
 # urls.py
-from django.urls import path
+from django.urls import path, include
 from .views import EmployeeListCreate, EmployeeDetail, register, check_credentials
 
 urlpatterns = [
@@ -9,5 +9,6 @@ urlpatterns = [
     # Retrieve, update, or delete a specific employee (GET, PUT, PATCH, DELETE)
     path('api/employees/<int:pk>/', EmployeeDetail.as_view(), name='employee-detail'),
     path('api/register/', register, name='register'),
-    path('api/check_credentials/', check_credentials, name='check_credentials')
+    path('api/check_credentials/', check_credentials, name='check_credentials'),
+    path('api/', include('predictor.urls'))
 ]

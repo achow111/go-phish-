@@ -135,7 +135,7 @@ export const Home = () => {
 
   // Conditionally render the PhishingStatus component based on predictedDepartment
   if (showPhishingPage && predictedDepartment !== null) {
-    const percentage = predictedDepartment * 100;
+    const percentage = Math.round(predictedDepartment * 100 * 100) / 100;
 
     // Define the status and type it as one of the three allowed values
     let status: "unlikely" | "likely" | "most likely" = "unlikely"; // Default to "unlikely"
