@@ -1,0 +1,26 @@
+.leaderboard-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .position,
+  .username,
+  .score {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .position {
+    width: 50px;
+  }
+  
+  .username {
+    width: 200px;
+  }
+  
+  .score {
+    width: 100px;
+  }
+  
