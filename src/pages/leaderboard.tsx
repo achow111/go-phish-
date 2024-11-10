@@ -51,7 +51,7 @@ export const Leaderboard = () => {
           />
         ))
       ) : (
-        <p>Loading data...</p>
+        <p>Loading data..</p>
       )}
     </div>
   );
