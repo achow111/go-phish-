@@ -1,9 +1,35 @@
 .home-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* Vertically center */
-    align-items: center;      /* Horizontally center */
-    height: 100vh;            /* Take up the full viewport height */
-    text-align: center;       /* Center the text */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .email-textarea {
+    width: 246px;
+    height: 150px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none !important; 
+  }
+  
+  .check-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .check-button:hover {
+    background-color: #45a049;
   }
   
