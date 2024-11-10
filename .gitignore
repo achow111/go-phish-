@@ -25,3 +25,6 @@ dist-ssr
 
 #Images
 build/
+__pycache__/
+migrations/
+__pycache__/

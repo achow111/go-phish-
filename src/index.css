@@ -3,6 +3,7 @@
 @import "./styles/home.css";
 @import "./styles/chest.css";
 @import "./styles/fishtank.css";
+@import "./styles/leaderboard.css";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
