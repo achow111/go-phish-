@@ -3,8 +3,6 @@ import Fishbackground from "../assets/images/fishbackground.svg";
 
 export const Signup = ({ setIsLogin }: { setIsLogin: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const [email, setEmail] = useState("");
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
 
   const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -53,7 +51,6 @@ export const Signup = ({ setIsLogin }: { setIsLogin: React.Dispatch<React.SetSta
               name="username"
               placeholder="Username"
               className="input-field"
-              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -63,7 +60,6 @@ export const Signup = ({ setIsLogin }: { setIsLogin: React.Dispatch<React.SetSta
               name="password"
               placeholder="Password"
               className="input-field"
-              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button type="submit" className="signup-button" onClick={() => signUpUser()}>
