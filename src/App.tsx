@@ -29,8 +29,8 @@ function App() {
   const pageStyles: { [key: string]: React.CSSProperties } = {
     Home: { marginLeft: "80px" },
     Chest: { marginLeft: "130px" },
-    FishTank: { marginLeft: "55px" },
-    Leaderboard: { marginLeft: "40px" },
+    FishTank: { marginLeft: "85px" },
+    Leaderboard: { marginLeft: "45px" },
   };
 
   return (

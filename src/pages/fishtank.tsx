@@ -8,7 +8,7 @@ import CrabSVG from '../assets/images/fishes/crab.svg';
 export const FishTank = () => {
   return (
     <div className="fish-tank">
-      <h1>The Fish Tank</h1>
+      <h1 className='main-header'>The Fish Tank</h1>
       <div className="fish-grid">
         <FishCard image={PurpleWhaleSVG} rarity="Rare" name="Purple Whale" quantity={4}/>
         <FishCard image={BarracudaSVG} rarity="Uncommon" name="Barracuda" quantity={4} />

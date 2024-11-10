@@ -12,7 +12,7 @@ import CodSVG from '../assets/images/fishes/cod.svg';
 import BarrelSVG from '../assets/images/barrel.svg';
 
 export const Chest = () => {
-    const [plays, setPlays] = useState(500);
+    const [plays, setPlays] = useState(20);
     const [fish, setFish] = useState("");
     const [message, setMessage] = useState("");
     const [isFishVisible, setIsFishVisible] = useState(false);
@@ -70,7 +70,7 @@ export const Chest = () => {
                 return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
         }
     };
-    
+
     const handleNewFish = () => {
         if (plays > 0 && !isTransitioning) {
             setIsTransitioning(true);  // Start transition
@@ -118,7 +118,7 @@ export const Chest = () => {
             </p>}
 
             {message && <p>{message}</p>}
-            <p>Plays remaining: {plays}</p>
+            <p>Barrels Left: {plays}</p>
         </div>
     );
 };

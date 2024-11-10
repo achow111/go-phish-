@@ -5,15 +5,25 @@ export const Leaderboard = () => {
   // State to check if user is part of an organization
   const [isInOrganization, setIsInOrganization] = useState(false);
   const [orgCode, setOrgCode] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  
+  // Dummy organization code for validation
+  const validOrgCode = "ABCD"; // Example valid org code for demonstration
 
   // Function to handle organization code submission
   const handleJoinOrganization = () => {
-    // Here, you would typically verify the org code, then set isInOrganization to true if successful
-    setIsInOrganization(true); // For this example, we'll assume success
+    if (!orgCode) {
+      setErrorMessage("Organization code cannot be empty.");
+    } else if (orgCode !== validOrgCode) {
+      setErrorMessage("Invalid organization code.");
+    } else {
+      setIsInOrganization(true); // Proceed if code is valid
+      setErrorMessage(''); // Clear any previous errors
+    }
   };
 
   return (
-    <div>
+    <div className={isInOrganization ? '' : 'leaderboard-container'}>
       <h1>Leaderboard Page</h1>
 
       {isInOrganization ? (
@@ -36,15 +46,20 @@ export const Leaderboard = () => {
             <label>
               <input
                 type="text"
+                className="input-field"
                 value={orgCode}
                 onChange={(e) => setOrgCode(e.target.value)}
-                placeholder="org. code"
+                placeholder="Organization code"
               />
             </label>
-            <div style={{ marginTop: '10px' }}> {/* Add some space between input and button */}
+            <div style={{ marginTop: '10px' }}>
               <button className="btn" type="submit">Join</button>
             </div>
           </form>
+          {/* Error message */}
+          {errorMessage && (
+            <div style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</div>
+          )}
         </div>
       )}
     </div>
