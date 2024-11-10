@@ -9,6 +9,7 @@ import SalmonSVG from '..//assets/images/fishes/salmon.svg';
 import BassSVG from '../assets/images/fishes/bass.svg';
 import TroutSVG from '../assets/images/fishes/trout.svg';
 import CodSVG from '../assets/images/fishes/cod.svg';
+import BarrelSVG from '../assets/images/barrel.svg';
 
 export const Chest = () => {
   const [plays, setPlays] = useState(500);
@@ -64,7 +65,8 @@ export const Chest = () => {
       case "Cod":
         return <img src={CodSVG} alt="Cod" />;
       default:
-        return null;
+        // Return the barrel image if no fish is selected
+        return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
     }
   };
 
@@ -83,14 +85,18 @@ export const Chest = () => {
     <div className="chest-main-container">
       {fish ? (
         <>
-          <p>Your catch: {fish}</p>
+          <p>Congratulations! You caught a {fish}!</p>
           {getFishImage(fish)} {/* Render the appropriate image */}
         </>
       ) : (
-        <p>{message}</p>
+        <div>
+          {message && <p>{message}</p>}
+          {/* Show the barrel image when no fish is selected */}
+          {getFishImage(fish)}
+        </div>
       )}
       <p>Plays remaining: {plays}</p>
-      <button onClick={handleNewFish}>Open Chest Again</button>
+      <button onClick={handleNewFish}>Open Chest</button>
     </div>
   );
 };
