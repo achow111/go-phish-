@@ -1,11 +1,23 @@
+// FishTank.js
+import FishCard from '../components/fishcard';
+import PurpleWhaleSVG from '../assets/images/fishes/purplewhale.svg';
+import BarracudaSVG from '../assets/images/fishes/barracuda.svg';
+import SquidSVG from '../assets/images/fishes/squid.svg';
+import CrabSVG from '../assets/images/fishes/crab.svg';
+
 export const FishTank = () => {
-    return (
-      <div>
-        <h1>Welcome to the Fish Tank Page!</h1>
-        <p>Here you can manage your fish tank.</p>
+  return (
+    <div className="fish-tank">
+      <h1>The Fish Tank</h1>
+      <p>Here you can manage your fish tank.</p>
+      <div className="fish-grid">
+        <FishCard image={PurpleWhaleSVG} rarity="Rare" name="Purple Whale" quantity={4}/>
+        <FishCard image={BarracudaSVG} rarity="Uncommon" name="Barracuda" quantity={4} />
+        <FishCard image={SquidSVG} rarity="Common" name="Squid" quantity={4} />
+        <FishCard image={CrabSVG} rarity="Legendary" name="Crab" quantity={4} />
       </div>
-    );
-  };
-  
-  export default FishTank;
-  
+    </div>
+  );
+};
+
+export default FishTank;
