@@ -29,4 +29,3 @@ def predict_email(email_content):
     predicted_label = label_encoder.inverse_transform(prediction)
 
     return predicted_label[0]
-

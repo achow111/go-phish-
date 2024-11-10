@@ -1,18 +1,16 @@
+/* FishTank container styling */
 .fish-tank {
-    padding: 2px;
+    padding: 20px;
     text-align: center;
-  }
-  
-.main-header{
-    margin-top: -1rem;
 }
 
-  .fish-grid {
+/* Grid layout for fish cards */
+.fish-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 20px;
-  }
+}
 
 /* FishCard styling */
 .fish-card {

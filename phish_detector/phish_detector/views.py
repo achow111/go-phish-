@@ -21,4 +21,3 @@ from django.shortcuts import render
 # This view will render the homepage for the root URL
 def home(request):
     return render(request, 'home.html')  # Create home.html in your templates directory
-
