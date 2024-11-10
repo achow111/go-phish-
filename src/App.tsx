@@ -23,12 +23,20 @@ function App() {
     setActivePage(page); // Set the active page based on the clicked nav button
   };
 
+  // Create a style object with marginLeft based on the active page
+  const pageStyles: { [key: string]: React.CSSProperties } = {
+    Home: { marginLeft: "80px" },
+    Chest: { marginLeft: "80px" },
+    FishTank: { marginLeft: "55px" },
+    Leaderboard: { marginLeft: "80px" },
+  };
+
   return (
     <div className="card">
       {isAuthenticated ? (
         <div style={{ display: "flex" }}>
           <Navbar onNavClick={handleNavClick} /> {/* Pass handleNavClick to Navbar */}
-          <div style={{ marginLeft: "80px" }}>
+          <div style={pageStyles[activePage]}>
             {activePage === "Home" && <Home />}
             {activePage === "Chest" && <Chest />}
             {activePage === "FishTank" && <FishTank />}

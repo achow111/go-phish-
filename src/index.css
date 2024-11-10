@@ -2,6 +2,7 @@
 @import "./styles/navbar.css";
 @import "./styles/home.css";
 @import "./styles/chest.css";
+@import "./styles/fishtank.css";
 @import "./styles/leaderboard.css";
 
 :root {
