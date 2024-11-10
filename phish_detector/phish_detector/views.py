@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from predictor.models import predict_email  # Import the prediction function
 
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt 
 def predict_email_view(request):
     # Get the email content from the POST request
     email_content = request.POST.get('emailContent')

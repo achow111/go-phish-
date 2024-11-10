@@ -1,5 +1,5 @@
 # urls.py
-from django.urls import path
+from django.urls import path, include
 from .views import EmployeeListCreate, EmployeeDetail
 
 urlpatterns = [
@@ -8,4 +8,6 @@ urlpatterns = [
     
     # Retrieve, update, or delete a specific employee (GET, PUT, PATCH, DELETE)
     path('api/employees/<int:pk>/', EmployeeDetail.as_view(), name='employee-detail'),
+
+    path('api/', include('predictor.urls'))
 ]

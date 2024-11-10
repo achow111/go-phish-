@@ -1,6 +1,6 @@
 from django.urls import path
-from ..phish_detector import views
+from phish_detector import views
 
 urlpatterns = [
-    path('predict/', views.predict_email_view, name='predict_email'),
+    path('predictor/', views.predict_email_view, name='predict_email'),
 ]
