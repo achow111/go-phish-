@@ -12,13 +12,12 @@ export const Home = () => {
   };
 
   const handleSubmit = async () => {
-    // Validate email content is not empty
     if (emailContent.trim() === "") {
       setErrorMessage("Please enter the email content.");
-      return; // Prevent further submission
+      return;
     }
 
-    setErrorMessage(""); // Clear error message if validation passes
+    setErrorMessage("");
 
     try {
       const response = await axios.post('http://localhost:8000/api/predict/',
@@ -41,19 +40,17 @@ export const Home = () => {
       <textarea
         className="email-textarea"
         placeholder="Include the subject, body, anything else you can..."
-        value={emailContent} // Bind state to textarea
-        onChange={handleTextChange} // Update state on change
+        value={emailContent}
+        onChange={handleTextChange}
       />
       <img
         className="phish-button"
         src={PhishButton}
         alt="Phish button"
-        onClick={handleSubmit} // Trigger handleSubmit on click
+        onClick={handleSubmit}
       />
       <p>Click to check email for phishing</p>
       {predictedDepartment && <p>Predicted Department: {predictedDepartment}</p>}
-      
-      {/* Display error message if emailContent is empty */}
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );

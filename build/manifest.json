@@ -6,5 +6,11 @@
     "action": {
       "default_popup": "index.html"
     },
-    "permissions": []
+    "permissions": [],
+    "icons": {
+    "16": "logo-192x192.png",
+    "48": "logo-192x192.png",
+    "128": "logo-192x192.png",
+    "192": "logo-192x192.png"
   }
+}

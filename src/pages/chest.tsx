@@ -70,21 +70,26 @@ export const Chest = () => {
                 return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
         }
     };
-
+    
     const handleNewFish = () => {
         if (plays > 0 && !isTransitioning) {
             setIsTransitioning(true);  // Start transition
-
+    
+            // Clear any previous message before transitioning
+            setMessage(""); 
+    
             // Start by hiding the barrel and showing the fish
             setFish(getFish());
             setIsFishVisible(true);
-
-            // After 2 seconds (time for fish to fade in), reset and show the barrel
+    
+            // After 3 seconds (time for fish to fade in), reset and show the barrel
             setTimeout(() => {
                 setIsFishVisible(false);
                 setPlays(plays - 1);
-                setMessage(""); // Clear any previous message
                 setIsTransitioning(false); // End transition
+    
+                // Clear the fish state when transitioning back to barrel
+                setFish("");  // This will hide the congrats message
             }, 3000); // Fish will be visible for 3 seconds
         } else {
             setFish("");

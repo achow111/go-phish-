@@ -61,8 +61,8 @@
 }
 
 .barrel {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     transition: opacity 1s ease-in-out;
 }
 
@@ -73,7 +73,7 @@
 
 .fish-congrats-message {
     display: inline-block;
-    width: 100px;
+    width: 200px;
     word-wrap: break-word;
     text-align: center;
     margin-top: 10px;
@@ -87,7 +87,7 @@
 }
 
 .message-container {
-    width: 100px;
+    width: 200px;
     text-align: center;
     margin-top: 10px;
 }
@@ -110,6 +110,6 @@
 }
 
 .fish-container img {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 300px;
+    max-height: 300px;
 }
