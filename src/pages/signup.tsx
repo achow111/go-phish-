@@ -3,6 +3,9 @@ import Fishbackground from "../assets/images/fishbackground.svg";
 
 export const Signup = ({ setIsLogin }: { setIsLogin: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
   const [isEmailValid, setIsEmailValid] = useState(true);
 
   const validateEmail = (email: string) => {
@@ -13,6 +16,11 @@ export const Signup = ({ setIsLogin }: { setIsLogin: React.Dispatch<React.SetSta
   const handleEmailBlur = () => {
     setIsEmailValid(validateEmail(email));
   };
+
+  // on sign up => ap icall to add this user in our db
+  const signUpUser = () => {
+    // 
+  }
 
   return (
     <>
@@ -45,18 +53,20 @@ export const Signup = ({ setIsLogin }: { setIsLogin: React.Dispatch<React.SetSta
               name="username"
               placeholder="Username"
               className="input-field"
+              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
           <div className="form-group">
-            <input
+            <input 
               type="password"
               id="password"
               name="password"
               placeholder="Password"
               className="input-field"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="signup-button">
+          <button type="submit" className="signup-button" onClick={() => signUpUser()}>
             Signup
           </button>
         </form>
