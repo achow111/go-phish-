@@ -1,4 +1,4 @@
-barrel:hover {
+.barrel:hover {
     animation: shake 0.5s;
     animation-iteration-count: infinite;
   }
@@ -16,6 +16,37 @@ barrel:hover {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
+
 .chest-main-container {
     margin-left: 4.5rem;
 }
+
+.barrel {
+    width: 100px;
+    height: 100px;
+    transition: opacity 1s ease-in-out; /* Smooth fade-out when dissolving */
+  }
+  
+  .fish-container {
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* Smooth fade-in for fish */
+  }
+  
+  .fade-in {
+    opacity: 1;
+  }
+  
+  .dissolve {
+    opacity: 0;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .fish-container img {
+    max-width: 100px;
+    max-height: 100px;
+  }

@@ -15,6 +15,8 @@ export const Chest = () => {
   const [plays, setPlays] = useState(500);
   const [fish, setFish] = useState("");
   const [message, setMessage] = useState("");
+  const [isFishVisible, setIsFishVisible] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const getFish = () => {
     // Legendary: 1%
@@ -65,16 +67,25 @@ export const Chest = () => {
       case "Cod":
         return <img src={CodSVG} alt="Cod" />;
       default:
-        // Return the barrel image if no fish is selected
         return <img src={BarrelSVG} alt="Barrel" className="barrel" />;
     }
   };
 
   const handleNewFish = () => {
-    if (plays > 0) {
+    if (plays > 0 && !isTransitioning) {
+      setIsTransitioning(true);  // Start transition
+
+      // Start by hiding the barrel and showing the fish
       setFish(getFish());
-      setPlays(plays - 1);
-      setMessage(""); // Clear any previous message
+      setIsFishVisible(true);
+
+      // After 2 seconds (time for fish to fade in), reset and show the barrel
+      setTimeout(() => {
+        setIsFishVisible(false);
+        setPlays(plays - 1);
+        setMessage(""); // Clear any previous message
+        setIsTransitioning(false); // End transition
+      }, 3000); // Fish will be visible for 3 seconds
     } else {
       setFish("");
       setMessage("You don't have enough plays left.");
@@ -83,20 +94,24 @@ export const Chest = () => {
 
   return (
     <div className="chest-main-container">
-      {fish ? (
-        <>
-          <p>Congratulations! You caught a {fish}!</p>
-          {getFishImage(fish)} {/* Render the appropriate image */}
-        </>
-      ) : (
-        <div>
-          {message && <p>{message}</p>}
-          {/* Show the barrel image when no fish is selected */}
-          {getFishImage(fish)}
-        </div>
-      )}
+      <div className="image-container">
+        {!isFishVisible ? (
+          <img
+            src={BarrelSVG}
+            alt="Barrel"
+            className={`barrel ${isTransitioning ? "dissolve" : ""}`}
+            onClick={handleNewFish}
+          />
+        ) : (
+          <div className="fish-container fade-in">
+            {getFishImage(fish)}
+          </div>
+        )}
+      </div>
+
+      {fish && <p>Congratulations! You caught a {fish}!</p>}
+      {message && <p>{message}</p>}
       <p>Plays remaining: {plays}</p>
-      <button onClick={handleNewFish}>Open Chest</button>
     </div>
   );
 };
