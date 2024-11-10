@@ -14,7 +14,7 @@ def default_fish():
         'Barracuda': 0, 
         'Purple Shark': 0
     }
-    
+
 point_system = {
     'Common': 4,
     'Rare': 7,
