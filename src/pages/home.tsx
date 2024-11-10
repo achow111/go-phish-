@@ -5,12 +5,21 @@ import PhishButton from "../assets/images/PhishButton.svg";
 export const Home = () => {
   const [emailContent, setEmailContent] = useState<string>("");
   const [predictedDepartment, setPredictedDepartment] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setEmailContent(e.target.value);
   };
 
   const handleSubmit = async () => {
+    // Validate email content is not empty
+    if (emailContent.trim() === "") {
+      setErrorMessage("Please enter the email content.");
+      return; // Prevent further submission
+    }
+
+    setErrorMessage(""); // Clear error message if validation passes
+
     try {
       const response = await axios.post('http://localhost:8000/api/predict/',
         new URLSearchParams({ emailContent: emailContent }),
@@ -43,6 +52,9 @@ export const Home = () => {
       />
       <p>Click to check email for phishing</p>
       {predictedDepartment && <p>Predicted Department: {predictedDepartment}</p>}
+      
+      {/* Display error message if emailContent is empty */}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 };
