@@ -29,13 +29,22 @@
     transform: scale(1.03);
 }
 
-/* Fish image styling */
+/* Fish image styling with bobbing animation */
 .fish-image {
-    width: 24px;
+    width: 32px;
     height: auto;
     margin-top: 5px;
+    animation: bobbing 1.5s ease-in-out infinite; /* Add animation */
 }
 
+@keyframes bobbing {
+    0%, 100% {
+        transform: translateY(0); /* Starting and ending at the original position */
+    }
+    50% {
+        transform: translateY(-8px); /* Move up slightly */
+    }
+}
 /* Divider line */
 .divider {
     border: none;
@@ -77,11 +86,11 @@
 
 /* Quantity styling */
 .quantity-container {
-    margin-top: 12px;
+    margin-top: 20px;
 }
 
 .quantity {
-    font-size: 0.8em;
+    font-size: 1rem;
     font-weight: bold;
     color: #333;
 }

@@ -167,3 +167,27 @@
     width: 200px; /* Adjust size as needed */
     height: auto;
 }
+
+.barrels-info {
+    text-align: center;
+    margin: 20px;
+}
+
+.barrels-count {
+    font-size: 18px;
+    color: #333;
+}
+
+.barrels-number {
+    font-weight: bold;
+    color: #003366; /* Dark blue color */
+    font-size: 24px;
+}
+
+/* Fish image styling with bobbing animation */
+.fish-logo-image {
+    width: 32px;
+    height: auto;
+    margin-top: 5px;
+    animation: bobbing 1.5s ease-in-out infinite; /* Add animation */
+}

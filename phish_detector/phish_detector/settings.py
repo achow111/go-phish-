@@ -25,8 +25,16 @@ SECRET_KEY = "django-insecure-)*tr)7o#c5wqt27b(&=gn(q5b7*o9=+id-yk909(j2x04c2hjx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
+# Add this to allow the Chrome extension origin:
+CSRF_TRUSTED_ORIGINS = [
+    "chrome-extension://mmcpnhabfbbnabennleffcpajfjenodh",  # Specific to your extension
+]
+
+# Also ensure that this is set for CORS
+CORS_ALLOWED_ORIGINS = [
+    "chrome-extension://mmcpnhabfbbnabennleffcpajfjenodh",  # Allow extension origin
+    "http://127.0.0.1:8000",  # Localhost (or adjust if you're using a different host)
+]
 
 # Application definition
 
@@ -43,15 +51,17 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+ALLOWED_HOSTS = ["chrome-extension://mmcpnhabfbbnabennleffcpajfjenodh", '127.0.0.1']
+
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # This should be before other middlewares
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',  # CSRF middleware should be after CORS middleware
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = "phish_detector.urls"
@@ -85,7 +95,7 @@ DATABASES = {
     }
 }
 
-
+AUTH_USER_MODEL = 'api.Employee'
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -126,5 +136,3 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-CORS_ALLOW_ALL_ORIGINS = True

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 
 # Create your models here.
 def default_fish():
@@ -35,25 +35,31 @@ fish_rarity = {
 }
 
 
-class Employee(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    organization = models.CharField(max_length=100,blank=True, null=True)
-    fish = models.JSONField(default=default_fish)
+class Employee(AbstractUser):
+    
+    password = models.CharField(max_length=100, blank=False, null=False)
+    email = models.CharField(max_length=100, blank=False, null=False)
+    organization = models.CharField(max_length=100, blank=True, null=True)
+    barrels = models.IntegerField(default=5)
+    fish = models.JSONField(default={
+        'Cod': 0, 
+        'Bass': 0, 
+        'Trout': 0, 
+        'Salmon': 0, 
+        'Pufferfish': 0, 
+        'Crab': 0, 
+        'Squid': 0, 
+        'Barracuda': 0, 
+        'Purple Shark': 0
+    }, blank=True)
     
     def __str__(self):
-        return self.user.username
+        return self.username
 
     @property
     def score(self):
         result = 0
-        
         for k, v in self.fish.items():
-            rarity = point_system[fish_rarity[k]] * v  # Check both dictionaries for missing keys
+            rarity = point_system.get(fish_rarity.get(k)) * v  # Use .get() to avoid KeyErrors
             result += rarity
-
         return result
-
-    @property
-    def fish_rarity(self):
-        return fish_rarity
-    

@@ -18,6 +18,26 @@
     width: 50px;
   }
   
+  .organization-row-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 42px; /* Optional, adds some space below the row */
+    margin-top: 2px;
+  }
+  
+  .organization-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .organization-code {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: normal;
+  }
+
   .username {
     width: 200px;
   }
